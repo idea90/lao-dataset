@@ -1,0 +1,24 @@
+# Lao Language & Grammar Knowledge Service (ພາສາລາວ)
+
+> An authoritative, structured linguistic reference engine providing rules, classifiers, tone determination matrices, and syntactic templates for the Lao language.
+
+## Quick Links for AI Agents
+- Full LLM Context: /llms-full.txt (All grammar rules, tone charts, and classifiers in markdown)
+- All Grammar Rules (JSON): /api/rules
+- All Classifiers (JSON): /api/classifiers
+- Tone Determination Matrix (JSON): /api/tones
+- Consonant Classes (JSON): /api/consonants
+- Semantic Search: /api/search?q={query}
+- Grammar Validator: /api/validate (POST)
+
+## Core Linguistic Characteristics of Lao
+1. **Word Order**: Strict canonical Subject-Verb-Object (SVO). Head-initial noun phrases: modifiers (adjectives, possessives) always follow nouns (`Noun + Adjective`).
+2. **Classifiers (ລັກສະນະນາມ)**: Mandatory for counting (`Noun + Numeral + Classifier`) and specification (`Noun + Classifier + Demonstrative`). Numbers cannot directly modify nouns.
+3. **Tones**: 6 distinct lexical tones (in standard Vientiane dialect) determined by an interplay of:
+   - Initial Consonant Class (High, Middle, Low)
+   - Syllable Ending (Live / Sonorant vs Dead / Checked stop -p, -t, -k)
+   - Vowel Length (Short vs Long)
+   - Tone Marks (ໄມ້ເອກ ່, ໄມ້ໂທ ້, etc.)
+4. **Negation**: The particle 'ບໍ່' (bor) is placed directly *before* the main verb.
+5. **Questions**: Yes/No questions are formed by placing 'ບໍ່?' (bor?) or 'ຫວາ?' (waa?) at the end of the sentence.
+6. **Spacing**: No spaces between words. Whitespace functions as clause/sentence punctuation.

@@ -1,0 +1,44 @@
+{
+  "dialect": "Vientiane Standard",
+  "tone_count": 6,
+  "consonant_classes": {
+    "High (ອັກສອນສູງ)": [
+      "ຂ",
+      "ສ",
+      "ຖ",
+      "ຜ",
+      "ຝ",
+      "ຫ",
+      "ໝ",
+      "ໜ",
+      "ຫລ",
+      "ຫຼ"
+    ],
+    "Middle (ອັກສອນກາງ)": [
+      "ກ",
+      "ຈ",
+      "ດ",
+      "ຕ",
+      "ບ",
+      "ປ",
+      "ຢ",
+      "ອ"
+    ],
+    "Low (ອັກສອນຕ່ຳ)": [
+      "ຄ",
+      "ງ",
+      "ຊ",
+      "ຍ",
+      "ທ",
+      "ນ",
+      "ພ",
+      "ຟ",
+      "ມ",
+      "ຣ",
+      "ລ",
+      "ວ",
+      "ຮ"
+    ]
+  },
+  "rules_summary": "### Tone Rules Breakdown (Standard Vientiane Dialect - 6 Tones):\n1. **Live Syllables (Unmarked)**:\n   - High Consonant -> Rising tone (24 / ˩˦)\n   - Middle Consonant -> Low tone (11 / ˩)\n   - Low Consonant -> High-falling or High tone (35 / ˦˥)\n\n2. **Tone Mark 1 (ໄມ້ເອກ ່)**:\n   - High Consonant -> Mid-falling tone (31 / ˧˩)\n   - Middle Consonant -> Mid-falling tone (31 / ˧˩)\n   - Low Consonant -> Mid tone (33 / ˧)\n\n3. **Tone Mark 2 (ໄມ້ໂທ ້)**:\n   - High Consonant -> Low-falling tone (52 / ˥˨)\n   - Middle Consonant -> High-falling tone (53 / ˥˧)\n   - Low Consonant -> High-falling / Rising tone (51 / ˥˩)\n\n4. **Dead Syllables (Checked Stops -p, -t, -k)**:\n   - Short Vowel: High/Mid consonant -> High tone (55); Low consonant -> Mid tone (33)\n   - Long Vowel: High/Mid consonant -> Low tone (11); Low consonant -> High-falling (52)"
+}

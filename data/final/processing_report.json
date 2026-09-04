@@ -1,0 +1,28 @@
+{
+  "initial_instruct_count": 79,
+  "cleaned_instruct_count": 71,
+  "augmented_instruct_count": 33,
+  "initial_pretrain_count": 29,
+  "cleaned_pretrain_count": 27,
+  "duplicate_records_removed": 10,
+  "low_quality_records_removed": 0,
+  "total_pretrain_tokens": 262480,
+  "total_instruct_tokens": 19117,
+  "category_distribution": {
+    "lexicon": 31,
+    "vocabulary": 6,
+    "Syntax & Word Order": 2,
+    "Noun Phrase Structure": 2,
+    "Classifiers (ລັກສະນະນາມ)": 2,
+    "Tense & Aspect Markers": 2,
+    "Negation": 2,
+    "Interrogatives (Questions)": 2,
+    "Nominalization (ການສ້າງຄຳນາມ)": 2,
+    "Phonology & Tone Determination": 2,
+    "classifiers": 15,
+    "phonology": 3,
+    "classifier_cloze": 15,
+    "grammar_error_correction": 8,
+    "phonology_tone_drill": 10
+  }
+}

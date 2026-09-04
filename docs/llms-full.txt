@@ -1,0 +1,180 @@
+# Complete Lao Language & Grammar Specification (ພາສາລາວ)
+
+## 1. Overview & Typology
+- **Family**: Kra–Dai -> Southwestern Tai (closely related to Isan and Thai, written in Lao script).
+- **Typology**: Analytic/Isolating, Tonogenesis, Canonical SVO, Head-Initial Noun Phrases.
+
+## 2. Core Grammar Rules
+
+### Syntax & Word Order: Canonical SVO Word Order (ໂຄງສ້າງປະໂຫຍກ (ປະທານ + ກິລິຍາ + ກຳ))
+**Explanation:** Lao is strictly an SVO (Subject-Verb-Object) language. Modifiers follow the head word they modify.
+**Formula:** `Subject + Verb + Object`
+**Examples:**
+- Lao: **ຂ້ອຍກິນເຂົ້າ** (Khoy kin khao)
+  - Gloss: I [Subject] + eat [Verb] + rice/food [Object]
+  - Translation: "I eat rice."
+- Lao: **ລາວອ່ານປຶ້ມ** (Lao aan puem)
+  - Gloss: He/She [Subject] + read [Verb] + book [Object]
+  - Translation: "He/She reads a book."
+
+### Noun Phrase Structure: Head-Initial Noun Phrases (ໂຄງສ້າງວະລີນາມ)
+**Explanation:** In Lao, adjectives and possessives follow the noun they modify.
+**Formula:** `Noun + Adjective / Possessive`
+**Examples:**
+- Lao: **ຫມາໃຫຍ່** (Ma nyai)
+  - Gloss: Dog + big
+  - Translation: "Big dog"
+- Lao: **ປຶ້ມຂອງຂ້ອຍ** (Puem khong khoy)
+  - Gloss: Book + of + me
+  - Translation: "My book"
+- Lao: **ລົດສີດຳ** (Lot si dam)
+  - Gloss: Car + color + black
+  - Translation: "Black car"
+
+### Classifiers (ລັກສະນະນາມ): Counting and Specification with Classifiers (ການໃຊ້ລັກສະນະນາມກັບຈຳນວນນັບ)
+**Explanation:** Numbers cannot modify nouns directly in Lao. They require a classifier matching the semantic category of the noun. Pattern: [Noun] + [Numeral] + [Classifier]. For demonstratives: [Noun] + [Classifier] + [Demonstrative].
+**Formula:** `Noun + Number + Classifier  OR  Noun + Classifier + Demonstrative (ນີ້/ນັ້ນ)`
+**Examples:**
+- Lao: **ຫມາ ສອງ ໂຕ** (Ma song to)
+  - Gloss: Dog + two + [animal classifier]
+  - Translation: "Two dogs"
+- Lao: **ປຶ້ມ ສາມ ເຫຼັ້ມ** (Puem sam lem)
+  - Gloss: Book + three + [book/blade classifier]
+  - Translation: "Three books"
+- Lao: **ຄົນ ຜູ້ ນີ້** (Khon phu ni)
+  - Gloss: Person + [person classifier] + this
+  - Translation: "This person"
+- Lao: **ລົດ ຄັນ ນັ້ນ** (Lot khan nan)
+  - Gloss: Car + [vehicle classifier] + that
+  - Translation: "That car"
+
+### Tense & Aspect Markers: Aspectual Particles (Past, Continuous, Future) (ຄຳຊ່ວຍບອກການ ແລະ ລັກສະນະ)
+**Explanation:** Lao verbs do not conjugate for tense. Temporal aspects are marked with pre-verbal or post-verbal particles: ໄດ້ (past/achieved), ແລ້ວ (already/completed), ກຳລັງ/ພວມ (progressive), ຢູ່ (continuous), ຈະ/ຊິ (future).
+**Formula:** `Past: ໄດ້ + Verb (or Verb + ແລ້ວ) | Progressive: ກຳລັງ + Verb (+ ຢູ່) | Future: ຈະ/ຊິ + Verb`
+**Examples:**
+- Lao: **ຂ້ອຍໄດ້ໄປວຽງຈັນ** (Khoy dai pai Viengchan)
+  - Gloss: I + [past marker] + go + Vientiane
+  - Translation: "I went to Vientiane."
+- Lao: **ຂ້ອຍກິນເຂົ້າແລ້ວ** (Khoy kin khao laeo)
+  - Gloss: I + eat + rice + [completed marker]
+  - Translation: "I already ate."
+- Lao: **ລາວກຳລັງຮຽນໜັງສືຢູ່** (Lao kam lang hian nang sue yu)
+  - Gloss: He + [progressive] + study + book + [continuous]
+  - Translation: "He is currently studying."
+- Lao: **ພວກເຮົາຈະໄປຕະຫຼາດມື້ອື່ນ** (Phuok hao ja pai talat mue uen)
+  - Gloss: We + will + go + market + tomorrow
+  - Translation: "We will go to the market tomorrow."
+
+### Negation: Negation Particle ບໍ່ (Bor) (ການປະຕິເສດ)
+**Explanation:** To negate a predicate, place ບໍ່ (bor) directly before the verb or adjective. For imperative prohibitions, use ຢ່າ (ya).
+**Formula:** `ບໍ່ + Verb / Adjective  OR  ຢ່າ + Verb`
+**Examples:**
+- Lao: **ຂ້ອຍບໍ່ຮູ້** (Khoy bor hu)
+  - Gloss: I + not + know
+  - Translation: "I don't know."
+- Lao: **ອາຫານນີ້ບໍ່ແຊບ** (Ahan ni bor saeb)
+  - Gloss: Food + this + not + delicious
+  - Translation: "This food is not delicious."
+- Lao: **ຢ່າໄປ** (Ya pai)
+  - Gloss: Don't + go
+  - Translation: "Don't go!"
+
+### Interrogatives (Questions): Question Particle Formation (ປະໂຫຍກຄຳຖາມ)
+**Explanation:** Yes/no questions place ບໍ່ (bor) at the end. Question words (wh-words) remain in situ (in the natural position of the information requested).
+**Formula:** `Statement + ບໍ່?  OR  [SVO with wh-word in place]`
+**Examples:**
+- Lao: **ເຈົ້າສະບາຍດີບໍ່?** (Jao sabai dee bor?)
+  - Gloss: You + comfortable/well + [question particle]?
+  - Translation: "How are you? / Are you well?"
+- Lao: **ເຈົ້າຊື່ຫຍັງ?** (Jao xue nyang?)
+  - Gloss: You + name + what?
+  - Translation: "What is your name?"
+- Lao: **ຫ້ອງນ້ຳຢູ່ໃສ?** (Hong nam yu sai?)
+  - Gloss: Bathroom + located + where?
+  - Translation: "Where is the restroom?"
+- Lao: **ລາວແມ່ນໃຜ?** (Lao maen phai?)
+  - Gloss: He/She + is + who?
+  - Translation: "Who is he/she?"
+
+### Nominalization (ການສ້າງຄຳນາມ): Prefixes ການ- (Kan-) and ຄວາມ- (Khuam-) (ການປ່ຽນຄຳກິລິຍາ ແລະ ຄຸນນາມ ເປັນຄຳນາມ)
+**Explanation:** Verbs of action take the prefix ການ- (kan-) to form nouns (actions/activities). Adjectives, states, or emotions take the prefix ຄວາມ- (khuam-) to form abstract nouns.
+**Formula:** `ການ + Action Verb  |  ຄວາມ + Adjective/State`
+**Examples:**
+- Lao: **ການຮຽນ** (Kan hian)
+  - Gloss: Prefix:action + learn
+  - Translation: "Education / Study / Learning"
+- Lao: **ການເດີນທາງ** (Kan doenthang)
+  - Gloss: Prefix:action + travel
+  - Translation: "Travel / Journey"
+- Lao: **ຄວາມຮັກ** (Khuam hak)
+  - Gloss: Prefix:state + love
+  - Translation: "Love (noun)"
+- Lao: **ຄວາມສຸກ** (Khuam suk)
+  - Gloss: Prefix:state + happy
+  - Translation: "Happiness"
+
+### Phonology & Tone Determination: Consonant Class Tone Matrix (ກົດເກນການຜັນສຽງວັນນະຍຸດ)
+**Explanation:** In Lao, the tone of a syllable is determined by 3 factors: (1) Consonant Class (High, Mid, Low), (2) Syllable type (Live vs Dead, Vowel length), and (3) Tone mark (ໄມ້ເອກ, ໄມ້ໂທ).
+**Formula:** `Consonant Class + Syllable Ending + Tone Mark -> Resulting Tone (1 of 6 tones)`
+**Examples:**
+- Lao: **ກາ (Middle + Live + No mark)** (Kaa)
+  - Gloss: Mid class + long vowel live syllable
+  - Translation: "Tone: Low tone"
+- Lao: **ຂາ (High + Live + No mark)** (Khaa)
+  - Gloss: High class + long vowel live syllable
+  - Translation: "Tone: Rising tone"
+- Lao: **ຄາ (Low + Live + No mark)** (Khaa)
+  - Gloss: Low class + long vowel live syllable
+  - Translation: "Tone: High/Mid tone"
+
+## 3. Mandatory Numerical Classifiers (ລັກສະນະນາມ)
+
+Lao requires classifiers when counting or specifying nouns. Pattern: `Noun + Number + Classifier`
+
+| Classifier | Transcription | Primary Usage Category |
+| :--- | :--- | :--- |
+| **ໂຕ** | to | Animals, items with legs/arms (shirts, pants, chairs, tables), letters/characters |
+| **ຄົນ** | khon | General people, individuals |
+| **ອົງ** | ong | Monks, royalty, Buddha statues, deities |
+| **ເຫຼັ້ມ** | lem | Books, notebooks, knives, needles, candles |
+| **ໃບ** | bai | Leaves, sheets of paper, tickets, documents, fruits, bags, glasses/cups |
+| **ຄັນ** | khan | Vehicles (cars, bicycles), umbrellas, spoons, forks |
+| **ຫຼັງ** | lang | Houses, buildings, mosquito nets |
+| **ເສັ້ນ** | sen | Linear items: roads, hairs, threads, strings, noodles |
+| **ໜ່ວຍ** | nuay | Round or three-dimensional objects: fruits, eggs, balls, organs, mountains |
+| **ດວງ** | duang | Sources of light/luminaries (sun, moon, stars), stamps, seals, hearts |
+| **ແຜ່ນ** | phaen | Flat sheets: planks of wood, paper boards, CD discs, mats |
+| **ຄູ່** | khu | Pairs: shoes, socks, earrings, chopsticks |
+| **ສາຍ** | sai | Rivers, ropes, belts, necklaces, bus routes |
+| **ຮູບ** | hup | Pictures, photographs, portrait images |
+| **ດອກ** | dok | Flowers, keys |
+
+## 4. Tone Determination Rules (6 Tones in Vientiane Dialect)
+
+
+### Tone Rules Breakdown (Standard Vientiane Dialect - 6 Tones):
+1. **Live Syllables (Unmarked)**:
+   - High Consonant -> Rising tone (24 / ˩˦)
+   - Middle Consonant -> Low tone (11 / ˩)
+   - Low Consonant -> High-falling or High tone (35 / ˦˥)
+
+2. **Tone Mark 1 (ໄມ້ເອກ ່)**:
+   - High Consonant -> Mid-falling tone (31 / ˧˩)
+   - Middle Consonant -> Mid-falling tone (31 / ˧˩)
+   - Low Consonant -> Mid tone (33 / ˧)
+
+3. **Tone Mark 2 (ໄມ້ໂທ ້)**:
+   - High Consonant -> Low-falling tone (52 / ˥˨)
+   - Middle Consonant -> High-falling tone (53 / ˥˧)
+   - Low Consonant -> High-falling / Rising tone (51 / ˥˩)
+
+4. **Dead Syllables (Checked Stops -p, -t, -k)**:
+   - Short Vowel: High/Mid consonant -> High tone (55); Low consonant -> Mid tone (33)
+   - Long Vowel: High/Mid consonant -> Low tone (11); Low consonant -> High-falling (52)
+
+
+## 5. Consonant Classification (High, Middle, Low)
+
+- **High (ອັກສອນສູງ) Class**: ຂ, ສ, ຖ, ຜ, ຝ, ຫ, ໝ, ໜ, ຫລ, ຫຼ
+- **Middle (ອັກສອນກາງ) Class**: ກ, ຈ, ດ, ຕ, ບ, ປ, ຢ, ອ
+- **Low (ອັກສອນຕ່ຳ) Class**: ຄ, ງ, ຊ, ຍ, ທ, ນ, ພ, ຟ, ມ, ຣ, ລ, ວ, ຮ

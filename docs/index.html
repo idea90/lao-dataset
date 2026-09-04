@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lao Language & Grammar Knowledge Portal for LLMs (ພາສາລາວ)</title>
+    <meta name="description" content="Structured linguistic knowledge base, grammar rules, classifiers, and tone matrices for Lao language. Ready for AI agents, LLM context ingestion, and developers.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Lao:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Lao', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+    <!-- Header -->
+    <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🇱🇦</span>
+                <div>
+                    <h1 class="text-lg font-bold text-white">Lao Grammar Portal for LLMs</h1>
+                    <p class="text-xs text-slate-400">Open Linguistic Knowledge Base for AI Models</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a href="llms.txt" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-mono text-emerald-400 border border-slate-700 transition">/llms.txt</a>
+                <a href="llms-full.txt" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-mono text-amber-400 border border-slate-700 transition">/llms-full.txt</a>
+                <a href="api/rules.json" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-mono text-cyan-400 border border-slate-700 transition">rules.json</a>
+                <a href="api/classifiers.json" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-mono text-pink-400 border border-slate-700 transition">classifiers.json</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Hero -->
+        <section class="text-center space-y-4 max-w-3xl mx-auto pt-4">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+                <span>⚡ Hosted on GitHub Pages • Free Static API for LLMs</span>
+            </div>
+            <h2 class="text-4xl font-extrabold text-white tracking-tight sm:text-5xl">
+                Fetch and Understand <span class="text-emerald-400">Lao Grammar</span>
+            </h2>
+            <p class="text-slate-400 text-base">
+                An authoritative linguistic resource designed for AI models (ChatGPT, Claude, Gemma, DeepSeek, Cursor) to fetch, reference, and understand Lao syntactic rules, tone matrices, and numerical classifiers.
+            </p>
+
+            <!-- Instant Client-Side Search -->
+            <div class="pt-4 max-w-xl mx-auto">
+                <div class="relative">
+                    <input id="searchInput" type="text" placeholder="Search rules & classifiers (e.g. classifier, SVO, animal, negation, ໂຕ)..." 
+                           oninput="filterContent()"
+                           class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-slate-100 placeholder-slate-500 shadow-inner">
+                </div>
+            </div>
+        </section>
+
+        <!-- LLM Agent Integration Cards -->
+        <section class="bg-gradient-to-r from-slate-900 to-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl">
+            <h3 class="text-lg font-bold text-white mb-3 flex items-center space-x-2">
+                <span>🤖 How Any LLM Fetches From This GitHub Page</span>
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4 text-xs">
+                <div class="bg-slate-950/80 rounded-xl p-4 border border-slate-800">
+                    <div class="font-bold text-emerald-400 mb-1">1. Read /llms-full.txt</div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Provide this site's <code class="text-slate-200">llms-full.txt</code> URL in your custom instructions, system prompt, or RAG pipeline for full linguistic rules.
+                    </p>
+                </div>
+                <div class="bg-slate-950/80 rounded-xl p-4 border border-slate-800">
+                    <div class="font-bold text-emerald-400 mb-1">2. Static REST JSON APIs</div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Fetch directly from <code class="text-slate-200">api/classifiers.json</code>, <code class="text-slate-200">api/rules.json</code>, or <code class="text-slate-200">api/tones.json</code> via curl or fetch.
+                    </p>
+                </div>
+                <div class="bg-slate-950/80 rounded-xl p-4 border border-slate-800">
+                    <div class="font-bold text-emerald-400 mb-1">3. 100% Free & Fast</div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Hosted on GitHub's global CDN. Never spins up your computer fans, requires zero backend servers, and has 99.99% uptime.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grammar Rules -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Lao Grammar Rule Knowledge Base</h3>
+                    <p class="text-xs text-slate-400">Formal linguistic rules and syntactic constraints</p>
+                </div>
+                <a href="api/rules.json" target="_blank" class="text-xs text-emerald-400 hover:underline font-mono">View raw rules.json &rarr;</a>
+            </div>
+            <div id="rulesContainer" class="grid md:grid-cols-2 gap-4">
+                
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="syntax & word order" data-search="canonical svo word order lao is strictly an svo (subject-verb-object) language. modifiers follow the head word they modify. ໂຄງສ້າງປະໂຫຍກ (ປະທານ + ກິລິຍາ + ກຳ)">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Syntax & Word Order</span>
+                <span class="text-slate-400 font-mono text-xs">ໂຄງສ້າງປະໂຫຍກ (ປະທານ + ກິລິຍາ + ກຳ)</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Canonical SVO Word Order</h3>
+            <p class="text-slate-300 text-sm mb-3">Lao is strictly an SVO (Subject-Verb-Object) language. Modifiers follow the head word they modify.</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: Subject + Verb + Object
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ຂ້ອຍກິນເຂົ້າ <span class="text-slate-400 font-normal">(Khoy kin khao)</span></div>
+                <div class="text-slate-400 italic">"I eat rice."</div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="noun phrase structure" data-search="head-initial noun phrases in lao, adjectives and possessives follow the noun they modify. ໂຄງສ້າງວະລີນາມ">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Noun Phrase Structure</span>
+                <span class="text-slate-400 font-mono text-xs">ໂຄງສ້າງວະລີນາມ</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Head-Initial Noun Phrases</h3>
+            <p class="text-slate-300 text-sm mb-3">In Lao, adjectives and possessives follow the noun they modify.</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: Noun + Adjective / Possessive
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ຫມາໃຫຍ່ <span class="text-slate-400 font-normal">(Ma nyai)</span></div>
+                <div class="text-slate-400 italic">"Big dog"</div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="classifiers (ລັກສະນະນາມ)" data-search="counting and specification with classifiers numbers cannot modify nouns directly in lao. they require a classifier matching the semantic category of the noun. pattern: [noun] + [numeral] + [classifier]. for demonstratives: [noun] + [classifier] + [demonstrative]. ການໃຊ້ລັກສະນະນາມກັບຈຳນວນນັບ">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Classifiers (ລັກສະນະນາມ)</span>
+                <span class="text-slate-400 font-mono text-xs">ການໃຊ້ລັກສະນະນາມກັບຈຳນວນນັບ</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Counting and Specification with Classifiers</h3>
+            <p class="text-slate-300 text-sm mb-3">Numbers cannot modify nouns directly in Lao. They require a classifier matching the semantic category of the noun. Pattern: [Noun] + [Numeral] + [Classifier]. For demonstratives: [Noun] + [Classifier] + [Demonstrative].</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: Noun + Number + Classifier  OR  Noun + Classifier + Demonstrative (ນີ້/ນັ້ນ)
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ຫມາ ສອງ ໂຕ <span class="text-slate-400 font-normal">(Ma song to)</span></div>
+                <div class="text-slate-400 italic">"Two dogs"</div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="tense & aspect markers" data-search="aspectual particles (past, continuous, future) lao verbs do not conjugate for tense. temporal aspects are marked with pre-verbal or post-verbal particles: ໄດ້ (past/achieved), ແລ້ວ (already/completed), ກຳລັງ/ພວມ (progressive), ຢູ່ (continuous), ຈະ/ຊິ (future). ຄຳຊ່ວຍບອກການ ແລະ ລັກສະນະ">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Tense & Aspect Markers</span>
+                <span class="text-slate-400 font-mono text-xs">ຄຳຊ່ວຍບອກການ ແລະ ລັກສະນະ</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Aspectual Particles (Past, Continuous, Future)</h3>
+            <p class="text-slate-300 text-sm mb-3">Lao verbs do not conjugate for tense. Temporal aspects are marked with pre-verbal or post-verbal particles: ໄດ້ (past/achieved), ແລ້ວ (already/completed), ກຳລັງ/ພວມ (progressive), ຢູ່ (continuous), ຈະ/ຊິ (future).</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: Past: ໄດ້ + Verb (or Verb + ແລ້ວ) | Progressive: ກຳລັງ + Verb (+ ຢູ່) | Future: ຈະ/ຊິ + Verb
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ຂ້ອຍໄດ້ໄປວຽງຈັນ <span class="text-slate-400 font-normal">(Khoy dai pai Viengchan)</span></div>
+                <div class="text-slate-400 italic">"I went to Vientiane."</div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="negation" data-search="negation particle ບໍ່ (bor) to negate a predicate, place ບໍ່ (bor) directly before the verb or adjective. for imperative prohibitions, use ຢ່າ (ya). ການປະຕິເສດ">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Negation</span>
+                <span class="text-slate-400 font-mono text-xs">ການປະຕິເສດ</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Negation Particle ບໍ່ (Bor)</h3>
+            <p class="text-slate-300 text-sm mb-3">To negate a predicate, place ບໍ່ (bor) directly before the verb or adjective. For imperative prohibitions, use ຢ່າ (ya).</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: ບໍ່ + Verb / Adjective  OR  ຢ່າ + Verb
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ຂ້ອຍບໍ່ຮູ້ <span class="text-slate-400 font-normal">(Khoy bor hu)</span></div>
+                <div class="text-slate-400 italic">"I don't know."</div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="interrogatives (questions)" data-search="question particle formation yes/no questions place ບໍ່ (bor) at the end. question words (wh-words) remain in situ (in the natural position of the information requested). ປະໂຫຍກຄຳຖາມ">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Interrogatives (Questions)</span>
+                <span class="text-slate-400 font-mono text-xs">ປະໂຫຍກຄຳຖາມ</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Question Particle Formation</h3>
+            <p class="text-slate-300 text-sm mb-3">Yes/no questions place ບໍ່ (bor) at the end. Question words (wh-words) remain in situ (in the natural position of the information requested).</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: Statement + ບໍ່?  OR  [SVO with wh-word in place]
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ເຈົ້າສະບາຍດີບໍ່? <span class="text-slate-400 font-normal">(Jao sabai dee bor?)</span></div>
+                <div class="text-slate-400 italic">"How are you? / Are you well?"</div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="nominalization (ການສ້າງຄຳນາມ)" data-search="prefixes ການ- (kan-) and ຄວາມ- (khuam-) verbs of action take the prefix ການ- (kan-) to form nouns (actions/activities). adjectives, states, or emotions take the prefix ຄວາມ- (khuam-) to form abstract nouns. ການປ່ຽນຄຳກິລິຍາ ແລະ ຄຸນນາມ ເປັນຄຳນາມ">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Nominalization (ການສ້າງຄຳນາມ)</span>
+                <span class="text-slate-400 font-mono text-xs">ການປ່ຽນຄຳກິລິຍາ ແລະ ຄຸນນາມ ເປັນຄຳນາມ</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Prefixes ການ- (Kan-) and ຄວາມ- (Khuam-)</h3>
+            <p class="text-slate-300 text-sm mb-3">Verbs of action take the prefix ການ- (kan-) to form nouns (actions/activities). Adjectives, states, or emotions take the prefix ຄວາມ- (khuam-) to form abstract nouns.</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: ການ + Action Verb  |  ຄວາມ + Adjective/State
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ການຮຽນ <span class="text-slate-400 font-normal">(Kan hian)</span></div>
+                <div class="text-slate-400 italic">"Education / Study / Learning"</div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition shadow-lg rule-card" data-category="phonology & tone determination" data-search="consonant class tone matrix in lao, the tone of a syllable is determined by 3 factors: (1) consonant class (high, mid, low), (2) syllable type (live vs dead, vowel length), and (3) tone mark (ໄມ້ເອກ, ໄມ້ໂທ). ກົດເກນການຜັນສຽງວັນນະຍຸດ">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold">Phonology & Tone Determination</span>
+                <span class="text-slate-400 font-mono text-xs">ກົດເກນການຜັນສຽງວັນນະຍຸດ</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Consonant Class Tone Matrix</h3>
+            <p class="text-slate-300 text-sm mb-3">In Lao, the tone of a syllable is determined by 3 factors: (1) Consonant Class (High, Mid, Low), (2) Syllable type (Live vs Dead, Vowel length), and (3) Tone mark (ໄມ້ເອກ, ໄມ້ໂທ).</p>
+            <div class="bg-slate-900/80 rounded-lg p-2.5 mb-3 font-mono text-xs text-amber-300 border border-slate-800">
+                Formula: Consonant Class + Syllable Ending + Tone Mark -> Resulting Tone (1 of 6 tones)
+            </div>
+            <div class="space-y-1.5 text-xs">
+                <div class="font-semibold text-slate-400">Example:</div>
+                <div class="text-emerald-300 font-medium text-sm">ກາ (Middle + Live + No mark) <span class="text-slate-400 font-normal">(Kaa)</span></div>
+                <div class="text-slate-400 italic">"Tone: Low tone"</div>
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <!-- Numerical Classifiers -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Lao Numerical Classifiers (ລັກສະນະນາມ)</h3>
+                    <p class="text-xs text-slate-400">Mandatory counters: Noun + Number + Classifier</p>
+                </div>
+                <a href="api/classifiers.json" target="_blank" class="text-xs text-emerald-400 hover:underline font-mono">View raw classifiers.json &rarr;</a>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/60 shadow-xl">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-900 text-xs uppercase tracking-wider text-slate-400 border-b border-slate-800">
+                        <tr>
+                            <th class="px-4 py-3">Classifier (ລັກສະນະນາມ)</th>
+                            <th class="px-4 py-3">Romanization</th>
+                            <th class="px-4 py-3">Semantic Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="classifiersBody">
+                        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ໂຕ to animals, items with legs/arms (shirts, pants, chairs, tables), letters/characters">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ໂຕ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">to</td>
+            <td class="px-4 py-3 text-slate-200">Animals, items with legs/arms (shirts, pants, chairs, tables), letters/characters</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ຄົນ khon general people, individuals">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ຄົນ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">khon</td>
+            <td class="px-4 py-3 text-slate-200">General people, individuals</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ອົງ ong monks, royalty, buddha statues, deities">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ອົງ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">ong</td>
+            <td class="px-4 py-3 text-slate-200">Monks, royalty, Buddha statues, deities</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ເຫຼັ້ມ lem books, notebooks, knives, needles, candles">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ເຫຼັ້ມ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">lem</td>
+            <td class="px-4 py-3 text-slate-200">Books, notebooks, knives, needles, candles</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ໃບ bai leaves, sheets of paper, tickets, documents, fruits, bags, glasses/cups">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ໃບ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">bai</td>
+            <td class="px-4 py-3 text-slate-200">Leaves, sheets of paper, tickets, documents, fruits, bags, glasses/cups</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ຄັນ khan vehicles (cars, bicycles), umbrellas, spoons, forks">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ຄັນ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">khan</td>
+            <td class="px-4 py-3 text-slate-200">Vehicles (cars, bicycles), umbrellas, spoons, forks</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ຫຼັງ lang houses, buildings, mosquito nets">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ຫຼັງ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">lang</td>
+            <td class="px-4 py-3 text-slate-200">Houses, buildings, mosquito nets</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ເສັ້ນ sen linear items: roads, hairs, threads, strings, noodles">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ເສັ້ນ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">sen</td>
+            <td class="px-4 py-3 text-slate-200">Linear items: roads, hairs, threads, strings, noodles</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ໜ່ວຍ nuay round or three-dimensional objects: fruits, eggs, balls, organs, mountains">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ໜ່ວຍ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">nuay</td>
+            <td class="px-4 py-3 text-slate-200">Round or three-dimensional objects: fruits, eggs, balls, organs, mountains</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ດວງ duang sources of light/luminaries (sun, moon, stars), stamps, seals, hearts">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ດວງ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">duang</td>
+            <td class="px-4 py-3 text-slate-200">Sources of light/luminaries (sun, moon, stars), stamps, seals, hearts</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ແຜ່ນ phaen flat sheets: planks of wood, paper boards, cd discs, mats">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ແຜ່ນ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">phaen</td>
+            <td class="px-4 py-3 text-slate-200">Flat sheets: planks of wood, paper boards, CD discs, mats</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ຄູ່ khu pairs: shoes, socks, earrings, chopsticks">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ຄູ່</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">khu</td>
+            <td class="px-4 py-3 text-slate-200">Pairs: shoes, socks, earrings, chopsticks</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ສາຍ sai rivers, ropes, belts, necklaces, bus routes">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ສາຍ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">sai</td>
+            <td class="px-4 py-3 text-slate-200">Rivers, ropes, belts, necklaces, bus routes</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ຮູບ hup pictures, photographs, portrait images">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ຮູບ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">hup</td>
+            <td class="px-4 py-3 text-slate-200">Pictures, photographs, portrait images</td>
+        </tr>
+        
+        <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition classifier-row" data-search="ດອກ dok flowers, keys">
+            <td class="px-4 py-3 font-semibold text-emerald-400 text-lg">ດອກ</td>
+            <td class="px-4 py-3 text-slate-300 font-mono text-sm">dok</td>
+            <td class="px-4 py-3 text-slate-200">Flowers, keys</td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 mt-16 py-8 text-center text-xs text-slate-500">
+        <p>Lao Language & Grammar AI Portal • Hosted on GitHub Pages • Open Source</p>
+    </footer>
+
+    <script>
+        function filterContent() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            // Filter rule cards
+            document.querySelectorAll('.rule-card').forEach(card => {
+                const text = card.getAttribute('data-search') || '';
+                card.style.display = (!query || text.includes(query)) ? 'block' : 'none';
+            });
+
+            // Filter classifier rows
+            document.querySelectorAll('.classifier-row').forEach(row => {
+                const text = row.getAttribute('data-search') || '';
+                row.style.display = (!query || text.includes(query)) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "count": 15,
+  "classifiers": [
+    {
+      "classifier": "ໂຕ",
+      "transcription": "to",
+      "usage": "Animals, items with legs/arms (shirts, pants, chairs, tables), letters/characters"
+    },
+    {
+      "classifier": "ຄົນ",
+      "transcription": "khon",
+      "usage": "General people, individuals"
+    },
+    {
+      "classifier": "ອົງ",
+      "transcription": "ong",
+      "usage": "Monks, royalty, Buddha statues, deities"
+    },
+    {
+      "classifier": "ເຫຼັ້ມ",
+      "transcription": "lem",
+      "usage": "Books, notebooks, knives, needles, candles"
+    },
+    {
+      "classifier": "ໃບ",
+      "transcription": "bai",
+      "usage": "Leaves, sheets of paper, tickets, documents, fruits, bags, glasses/cups"
+    },
+    {
+      "classifier": "ຄັນ",
+      "transcription": "khan",
+      "usage": "Vehicles (cars, bicycles), umbrellas, spoons, forks"
+    },
+    {
+      "classifier": "ຫຼັງ",
+      "transcription": "lang",
+      "usage": "Houses, buildings, mosquito nets"
+    },
+    {
+      "classifier": "ເສັ້ນ",
+      "transcription": "sen",
+      "usage": "Linear items: roads, hairs, threads, strings, noodles"
+    },
+    {
+      "classifier": "ໜ່ວຍ",
+      "transcription": "nuay",
+      "usage": "Round or three-dimensional objects: fruits, eggs, balls, organs, mountains"
+    },
+    {
+      "classifier": "ດວງ",
+      "transcription": "duang",
+      "usage": "Sources of light/luminaries (sun, moon, stars), stamps, seals, hearts"
+    },
+    {
+      "classifier": "ແຜ່ນ",
+      "transcription": "phaen",
+      "usage": "Flat sheets: planks of wood, paper boards, CD discs, mats"
+    },
+    {
+      "classifier": "ຄູ່",
+      "transcription": "khu",
+      "usage": "Pairs: shoes, socks, earrings, chopsticks"
+    },
+    {
+      "classifier": "ສາຍ",
+      "transcription": "sai",
+      "usage": "Rivers, ropes, belts, necklaces, bus routes"
+    },
+    {
+      "classifier": "ຮູບ",
+      "transcription": "hup",
+      "usage": "Pictures, photographs, portrait images"
+    },
+    {
+      "classifier": "ດອກ",
+      "transcription": "dok",
+      "usage": "Flowers, keys"
+    }
+  ]
+}
