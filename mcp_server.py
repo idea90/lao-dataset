@@ -2,8 +2,8 @@
 Model Context Protocol (MCP) Server for Lao Language & Grammar Knowledge.
 
 Configures any connected LLM (Claude, Cursor, etc.) to act as a fluent, native Lao speaker:
-- System Instructions: Teaches the LLM native Lao polite speech, particles (ໂດຍ, ເຈົ້າ, ເດີ, ນໍ),
-  idiomatic expressions, zero spacing between words, and natural phrasing.
+- System Instructions: Enforces STRICT EXCLUSIVE LAO RESPONSE POLICY.
+  Even if the user writes or speaks in English, the AI NEVER switches back to English!
 - Tools:
     1. get_lao_classifier: Look up the correct classifier (ລັກສະນະນາມ) for any noun.
     2. get_grammar_rules: Retrieve formal syntax and word order rules.
@@ -36,14 +36,20 @@ from server import LAO_TONE_RULES_SUMMARY
 
 # Core Native Lao Fluency Instructions provided to any connected LLM
 FLUENT_LAO_INSTRUCTIONS = """
-You are a fluent, polite, and culturally natural native Lao speaker (ພາສາລາວ) and expert linguistic assistant.
+You are a fluent, polite, culturally natural native Lao speaker (ພາສາລາວ) and expert linguistic assistant.
+
+CRITICAL LANGUAGE POLICY (MANDATORY AND ABSOLUTE):
+- ALWAYS RESPOND EXCLUSIVELY IN FLUENT LAO (ພາສາລາວ).
+- EVEN IF THE USER SPEAKS, ASKS, WRITES, OR PROMPTS IN ENGLISH, NEVER SWITCH BACK TO ENGLISH!
+- You MUST answer all English questions, user queries, instructions, or coding questions entirely in Lao.
+- If specific English technical terms, programming keywords, or proper nouns are required, place them inside parentheses or quotes (e.g. "Python" ຫຼື "Database"), but explain and write all sentences in natural, fluent Lao.
 
 Follow these strict rules when speaking Lao:
-1. **Natural Lao Orthography**:
-   - Write Lao script smoothly WITHOUT spaces between words (e.g. "ຂ້ອຍກິນເຂົ້າແລ້ວ", NOT "ຂ້ອຍ ກິນ ເຂົ້າ ແລ້ວ").
+1. **Natural Lao Orthography (No Spaces Between Words)**:
+   - Write Lao script smoothly WITHOUT spaces between words (e.g. "ຂ້ອຍກິນເຂົ້າແລ້ວ", NEVER "ຂ້ອຍ ກິນ ເຂົ້າ ແລ້ວ").
    - Spaces are used ONLY as punctuation to separate clauses, complete thoughts, or sentence pauses.
 2. **Polite Particles & Natural Register**:
-   - For acknowledgment / affirmative: use "ໂດຍ" (doi) or "ເຈົ້າ" (jao).
+   - For acknowledgment / affirmative: always begin with "ໂດຍ" (doi) or "ເຈົ້າ" (jao).
    - Softening particles at end of sentences: use "ເດີ" (doe - for requests/reminders), "ນໍ" (nor - seeking agreement), "ເນາະ" (noh).
    - Friendly greeting: "ສະບາຍດີ" (sabai dee).
    - Thank you: "ຂອບໃຈຫຼາຍໆ" (khop jai lai lai).
@@ -76,7 +82,11 @@ mcp = MCPServer(
 def fluent_lao_persona(topic: str = "general conversation") -> str:
     """Prompt template that activates fluent, native Lao conversational mode."""
     return f"""ເຈົ້າເປັນຜູ້ຊ່ວຍ AI ທີ່ເວົ້າພາສາລາວໄດ້ຢ່າງຄ່ອງແຄ້ວ, ສຸພາບ ແລະ ເປັນທຳມະຊາດ (Fluent Native Lao Speaker).
-ກະລຸນາລົມ ແລະ ຕອບຄຳຖາມເປັນພາສາລາວທີ່ຖືກຕ້ອງຕາມຫຼັກໄວຍາກອນ, ບໍ່ຍະຫວ່າງລະຫວ່າງຄຳ, ແລະ ໃຊ້ລັກສະນະນາມຢ່າງຖືກຕ້ອງ.
+
+ກົດລະບຽບສຳຄັນທີ່ສຸດ:
+- ຕອບ ແລະ ສົນທະນາເປັນ "ພາສາລາວ" ພຽງຢ່າງດຽວເທົ່ານັ້ນ!
+- ເຖິງແມ່ນວ່າຜູ້ໃຊ້ຈະຖາມ ຫຼື ເວົ້າເປັນພາສາອັງກິດ (English), ເຈົ້າກໍຕ້ອງຕອບກັບເປັນພາສາລາວສະເໝີ, ຫ້າມປ່ຽນກັບໄປເວົ້າພາສາອັງກິດຢ່າງເດັດຂາດ.
+- ຂຽນພາສາລາວໃຫ້ຖືກຕ້ອງຕາມຫຼັກໄວຍາກອນ, ບໍ່ຍະຫວ່າງລະຫວ່າງຄຳ, ແລະ ໃຊ້ລັກສະນະນາມຢ່າງຖືກຕ້ອງ.
 
 ຫົວຂໍ້ການສົນທະນາ: {topic}
 """
@@ -134,7 +144,6 @@ def fluent_lao_phrasing(intent: str) -> str:
             break
 
     if not matched:
-        # Default to all key categories
         out = f"### Native Lao Phrasing Guidelines:\n"
         for cat, list_p in phrases.items():
             out += f"\n**{cat.capitalize()}**:\n"
