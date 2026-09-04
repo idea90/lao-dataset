@@ -1,12 +1,17 @@
 """
 Model Context Protocol (MCP) Server for Lao Language & Grammar Knowledge.
 
-Provides tools and resources to Claude Desktop, Cursor, Claude Code, and any MCP-compliant LLM:
+Configures any connected LLM (Claude, Cursor, etc.) to act as a fluent, native Lao speaker:
+- System Instructions: Teaches the LLM native Lao polite speech, particles (ໂດຍ, ເຈົ້າ, ເດີ, ນໍ),
+  idiomatic expressions, zero spacing between words, and natural phrasing.
 - Tools:
     1. get_lao_classifier: Look up the correct classifier (ລັກສະນະນາມ) for any noun.
     2. get_grammar_rules: Retrieve formal syntax and word order rules.
     3. get_tone_rules: Get the 6-tone determination rules for High, Middle, and Low consonants.
     4. validate_lao_sentence: Analyze a Lao sentence for classifier syntax and grammatical patterns.
+    5. fluent_lao_phrasing: Provides natural, native conversational phrasing and honorifics.
+- Prompts:
+    - fluent_lao_persona: One-click prompt that switches the AI into a fluent Lao assistant.
 - Resources:
     - lao://grammar/rules: Complete formal grammar rules.
     - lao://grammar/classifiers: Full table of 15+ numerical classifiers.
@@ -29,13 +34,119 @@ from core.knowledge_base import (
 from core.unicode_utils import analyze_lao_script
 from server import LAO_TONE_RULES_SUMMARY
 
-# Initialize MCP Server
-mcp = MCPServer("Lao-Grammar-Knowledge-Server")
+# Core Native Lao Fluency Instructions provided to any connected LLM
+FLUENT_LAO_INSTRUCTIONS = """
+You are a fluent, polite, and culturally natural native Lao speaker (ພາສາລາວ) and expert linguistic assistant.
+
+Follow these strict rules when speaking Lao:
+1. **Natural Lao Orthography**:
+   - Write Lao script smoothly WITHOUT spaces between words (e.g. "ຂ້ອຍກິນເຂົ້າແລ້ວ", NOT "ຂ້ອຍ ກິນ ເຂົ້າ ແລ້ວ").
+   - Spaces are used ONLY as punctuation to separate clauses, complete thoughts, or sentence pauses.
+2. **Polite Particles & Natural Register**:
+   - For acknowledgment / affirmative: use "ໂດຍ" (doi) or "ເຈົ້າ" (jao).
+   - Softening particles at end of sentences: use "ເດີ" (doe - for requests/reminders), "ນໍ" (nor - seeking agreement), "ເນາະ" (noh).
+   - Friendly greeting: "ສະບາຍດີ" (sabai dee).
+   - Thank you: "ຂອບໃຈຫຼາຍໆ" (khop jai lai lai).
+3. **Mandatory Classifiers (ລັກສະນະນາມ)**:
+   - When counting or quantifying items, ALWAYS use the structure: [Noun] + [Number] + [Classifier].
+   - Examples:
+     * Dogs/Cats/Cars: "ໝາ 2 ໂຕ" (dogs 2 [clf]), "ລົດ 1 ຄັນ" (car 1 [clf]).
+     * Books: "ປຶ້ມ 3 ຫົວ" (books 3 [clf]).
+     * Flat things: "ເຈ້ຍ 5 ແຜ່ນ" (paper 5 [clf]).
+4. **Natural Sentence Flow**:
+   - Avoid awkward literal English translations. Use idiomatic Lao phrasing (e.g. use "ບໍ່ເປັນຫຍັງ" for you're welcome / no problem; "ກິນເຂົ້າແລ້ວບໍ່?" for how are you / have you eaten?).
+5. **Honorifics & Pronouns**:
+   - Self (polite): "ຂ້ອຍ" (khoy).
+   - You (polite/respectful): "ເຈົ້າ" (jao) or "ທ່ານ" (than - formal).
+   - Third person: "ລາວ" (lao) or "ເພິ່ນ" (phoen - respectful).
+"""
+
+# Initialize MCP Server with explicit instructions
+mcp = MCPServer(
+    name="Lao-Grammar-Knowledge-Server",
+    instructions=FLUENT_LAO_INSTRUCTIONS
+)
+
+
+# =============================================================================
+# MCP PROMPTS (For 1-Click Fluent Lao Persona)
+# =============================================================================
+
+@mcp.prompt()
+def fluent_lao_persona(topic: str = "general conversation") -> str:
+    """Prompt template that activates fluent, native Lao conversational mode."""
+    return f"""ເຈົ້າເປັນຜູ້ຊ່ວຍ AI ທີ່ເວົ້າພາສາລາວໄດ້ຢ່າງຄ່ອງແຄ້ວ, ສຸພາບ ແລະ ເປັນທຳມະຊາດ (Fluent Native Lao Speaker).
+ກະລຸນາລົມ ແລະ ຕອບຄຳຖາມເປັນພາສາລາວທີ່ຖືກຕ້ອງຕາມຫຼັກໄວຍາກອນ, ບໍ່ຍະຫວ່າງລະຫວ່າງຄຳ, ແລະ ໃຊ້ລັກສະນະນາມຢ່າງຖືກຕ້ອງ.
+
+ຫົວຂໍ້ການສົນທະນາ: {topic}
+"""
 
 
 # =============================================================================
 # MCP TOOLS
 # =============================================================================
+
+@mcp.tool()
+def fluent_lao_phrasing(intent: str) -> str:
+    """
+    Look up natural, idiomatic, fluent Lao expressions and polite phrasing for various intents.
+    
+    Args:
+        intent: The conversational intent (e.g. 'greeting', 'thanks', 'apology', 'farewell', 'agreement', 'ordering_food').
+    """
+    phrases = {
+        "greeting": [
+            {"lao": "ສະບາຍດີ", "meaning": "Hello / Good day (standard polite greeting)"},
+            {"lao": "ສະບາຍດີຕອນເຊົ້າ", "meaning": "Good morning"},
+            {"lao": "ກິນເຂົ້າແລ້ວບໍ່?", "meaning": "Have you eaten yet? (Common friendly informal greeting)"},
+        ],
+        "thanks": [
+            {"lao": "ຂອບໃຈຫຼາຍໆເດີ", "meaning": "Thank you very much (warm and polite)"},
+            {"lao": "ຂອບໃຈເດີ້", "meaning": "Thanks! (casual, friendly)"},
+            {"lao": "ຍິນດີຮັບໃຊ້", "meaning": "Happy to serve / At your service"},
+        ],
+        "apology": [
+            {"lao": "ຂໍໂທດຫຼາຍໆເດີ", "meaning": "I'm very sorry (sincere apology)"},
+            {"lao": "ບໍ່ເປັນຫຍັງ", "meaning": "No problem / That's okay / You're welcome"},
+        ],
+        "agreement": [
+            {"lao": "ໂດຍ, ແມ່ນແລ້ວ", "meaning": "Yes, that's correct (polite)"},
+            {"lao": "ເຈົ້າ, ຖືກຕ້ອງ", "meaning": "Yes, exactly"},
+            {"lao": "ເຫັນດີນຳ", "meaning": "I agree with you"},
+        ],
+        "farewell": [
+            {"lao": "ໂຊກດີເດີ", "meaning": "Good luck / Take care"},
+            {"lao": "ແລ້ວພົບກັນໃໝ່ເດີ", "meaning": "See you again soon"},
+            {"lao": "ໄປກ່ອນເດີ", "meaning": "I'm heading out now (casual)"},
+        ],
+        "ordering_food": [
+            {"lao": "ຂໍສັ່ງອາຫານແດ່ເດີ", "meaning": "May I order food please?"},
+            {"lao": "ເອົາເຝີງົວ 1 ຖ້ວຍແດ່", "meaning": "I'd like 1 bowl of beef pho please (uses classifier 'ຖ້ວຍ')"},
+            {"lao": "ຄິດເງິນແດ່", "meaning": "Check please / Bill please"},
+        ]
+    }
+
+    intent_clean = intent.lower().strip()
+    matched = None
+    for k, v in phrases.items():
+        if k in intent_clean or intent_clean in k:
+            matched = (k, v)
+            break
+
+    if not matched:
+        # Default to all key categories
+        out = f"### Native Lao Phrasing Guidelines:\n"
+        for cat, list_p in phrases.items():
+            out += f"\n**{cat.capitalize()}**:\n"
+            for p in list_p:
+                out += f"- **{p['lao']}**: {p['meaning']}\n"
+        return out
+
+    out = f"### Fluent Lao Phrasing for '{matched[0]}':\n\n"
+    for p in matched[1]:
+        out += f"- **{p['lao']}** — *{p['meaning']}*\n"
+    return out
+
 
 @mcp.tool()
 def get_lao_classifier(noun_or_category: str) -> str:
@@ -60,7 +171,7 @@ def get_lao_classifier(noun_or_category: str) -> str:
     for c in matched:
         res += f"- **{c['classifier']}** (Romanization: *{c['transcription']}*)\n"
         res += f"  - Usage: {c['usage']}\n"
-        res += f"  - Counting pattern: [Noun] + [Numeral] + **{c['classifier']}**\n\n"
+        res += f"  - Counting pattern: [Noun] + [Numeral] + **{c['classifier']}** (e.g. ສອງ{c['classifier']})\n\n"
     return res.strip()
 
 
